@@ -1,26 +1,25 @@
-# Mustafa Travels & Tours S.L. ✈️🕋
+# Mustafa Travels & Tours S.L. — website starter
 
-Welcome to the official repository for **Mustafa Travels & Tours S.L.**, based in Barcelona, Spain. We specialize in providing premium Hajj, Umrah, and international travel packages.
+This is the **first deployable static website milestone**, adapted from the supplied travel agency HTML concept. It is **not** a finished booking platform.
 
-## 🌟 Features
-- **Responsive Design:** Mobile, tablet, and desktop friendly.
-- **Dynamic Packages:** Custom Admin Panel to add/edit Umrah & Hajj packages.
-- **Blog Section:** Admin can upload blogs and photos of Makkah & Madinah.
-- **Google Reviews Slider:** Showcases real customer feedback.
-- **Direct WhatsApp Integration:** Floating button for instant booking.
-- **Google Maps:** Integrated location for the Barcelona office.
+## Preview
+Open `index.html` locally or serve this directory with `python -m http.server 8000` and visit `http://localhost:8000`.
 
-## 🛠️ Tech Stack
-- HTML5
-- CSS3 (Custom Styling)
-- Vanilla JavaScript (Local Storage for Admin Panel)
-- Hosted on **Vercel**
+## Publish safely
+1. Create a **new private GitHub repository** (do not upload credentials).
+2. Upload the contents of this folder to the repository root.
+3. Import the GitHub repository into Vercel, select **Other** framework, leave build command empty, and set output directory to `.`.
+4. Use the generated Vercel preview URL for testing. **Do not change GoDaddy DNS** until all pages are approved.
+5. Later, add `mustafatravels.com` as a custom domain in Vercel and follow its exact DNS instructions in GoDaddy; verify before switching.
 
-## 📍 Contact
-- **Address:** Rambla de Badal 141, Local 1 Bajo, 08028 Barcelona, Spain
-- **WhatsApp:** +34 611 473 217
-- **Emergency 24/7:** +34 632 234 216
-- **Email:** info@mustafatravels.org
+## Status / limitations
+- Landing page, standalone services pages, travel journal and admin **UI preview** included.
+- Flight search is **not connected to Travelport**; do not collect card payments or claim live ticket availability.
+- Admin is **not authenticated or persistent**. Never use its preview for private business data.
+- Blog language options are hand-authored samples, **not automatic translation**.
+- Background slides are still images, **not licensed video assets**.
+- External images/fonts require network access; replace with appropriately licensed local assets before production.
+- Review every sample package, hotel, testimonial, rating, price, contact detail and legal claim before launch.
 
----
-*Your Journey Our Priority.*
+## Next development milestone
+Build authenticated CMS (e.g. Supabase Auth + database + storage), editable packages/blogs, multilingual publication workflow, and then Travelport integration with a server-side backend. API keys must never be embedded in frontend code.
