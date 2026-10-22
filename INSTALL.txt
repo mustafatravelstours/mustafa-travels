@@ -1,0 +1,6 @@
+1. Supabase SQL Editor: run MULTI-HOTEL-SQL.sql.
+2. GitHub: replace ONLY umrah-builder.html in repository root. Do not overwrite supabase-config.js.
+3. Commit; wait for Vercel Ready; refresh /umrah-builder.html with Ctrl+F5.
+4. Test three stays Makkah 11-16 Feb, Madinah 16-21 Feb, Makkah 21-26 Feb. Check nights 5+5+5 and cost total.
+5. Save package and Edit to verify hotel stays persisted. Customer brochure hides individual hotel costs.
+Note: This changes the brochure builder and public JSON data; other public detail pages may need an additional update to render all stays.
