@@ -1,0 +1,20 @@
+MUSTAFA TRAVELS — PREMIUM UMRAH DETAIL PAGE
+
+FILES TO UPLOAD/REPLACE in GitHub repo root:
+- umrah-detail.html (replace)
+- umrah-detail.js (replace)
+- umrah-detail-premium.css (NEW)
+
+No SQL changes. Keep supabase-config.js as currently configured.
+This is a presentation upgrade; existing Supabase sharing rates and calculator are preserved.
+
+IMAGE ISSUE:
+The existing Ramadan Economy Basic image_url is a Pexels search page, not an image. The hero uses a branded green fallback until you replace that URL with a direct image file URL, such as an HTTPS .jpg/.png/.webp link or images.unsplash.com photo link. The image loader also checks that the image can load.
+
+TEST:
+1. Upload the 3 files to GitHub main branch, commit, wait for Vercel Ready.
+2. Open https://mustafa-travels.vercel.app/umrah.html, choose Ramadan Economy Basic.
+3. Ctrl+F5 refresh. Verify 3 stay cards, sharing rates, 4 adults Quad = EUR 4,600 (test prices).
+4. Try mobile layout and WhatsApp enquiry.
+
+No actual live deployment, database mutation, or end-to-end browser verification was performed in this package.
