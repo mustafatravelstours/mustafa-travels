@@ -1,0 +1,12 @@
+Mustafa Travels — Five Sharing Categories
+
+1. Run ADD-SINGLE-RATE.sql in the SAME Supabase project as your website.
+2. In GitHub root replace ONLY umrah-builder.html and umrah-detail.js from this ZIP.
+3. Do NOT overwrite supabase-config.js. Do not upload SQL as a website page.
+4. Commit; wait for Vercel Ready; hard refresh Ctrl+F5.
+5. Open umrah-builder.html through admin; edit a saved package; enter Single, Double, Triple, Quad, Quint and Child/Infant rates; click Save Sharing Prices.
+6. Verify the public umrah-detail.html?id=PACKAGE_ID shows five options when all five rates are saved.
+
+Rates are per adult, final selling prices. Child/infant rates are separate.
+The calculator estimates rooms; actual occupancy, children policy and pricing require agency confirmation.
+NOTE: This is a targeted five-sharing-types patch; it does not add multiple hotel stays.
