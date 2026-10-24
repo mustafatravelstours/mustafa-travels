@@ -1,0 +1,1 @@
+Logo added to main website navigation (index.html, umrah.html) and Umrah detail page. Full logo file: mustafa-logo-full.webp. Compact header logo: mustafa-logo-header.webp. Upload all extracted files to the same GitHub website root. The rest of the website files and Supabase settings are unchanged.
