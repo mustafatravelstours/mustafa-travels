@@ -24,5 +24,9 @@
 .site-nav .brand-image img{display:block;width:150px;height:70px;object-fit:contain}
 @media(max-width:760px){.nav .logo-image img,.site-nav .brand-image img{width:112px;height:55px}.nav .logo-image,.site-nav .brand-image{padding:2px 5px}}
 
-/* Consistent compact identity for package detail */
-.site-nav{margin:14px auto 0;width:calc(100% - 48px);max-width:1380px;border-radius:999px;min-height:76px;height:auto;padding:12px 24px;box-shadow:0 12px 40px #00000012;border:0}.site-nav .brand-image{background:none;box-shadow:none;padding:0;display:flex;align-items:center;gap:8px}.site-nav .brand-copy strong{font-size:17px;color:#111}.site-nav .brand-copy small{font-size:8px;color:#444}.site-nav .brand-mark{width:43px;height:43px}.site-nav .nav-contact{background:#111;color:#d1a74f}@media(max-width:650px){.site-nav{width:calc(100% - 20px);border-radius:25px;padding:12px;flex-wrap:wrap;gap:12px}.site-nav nav{gap:12px;flex-wrap:wrap}.site-nav .brand-copy strong{font-size:14px}}
+/* Per-stay hotel photos from admin shared links */
+.stay-side.has-hotel-photo{background-size:cover!important;background-position:center!important;color:#fff!important}
+.hotel-photo-gallery{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}
+.hotel-photo-thumb{width:74px;height:60px;border:2px solid #e6e5df;border-radius:10px;padding:0;overflow:hidden;cursor:pointer;background:#eee}
+.hotel-photo-thumb:focus-visible{outline:3px solid #d1a952;outline-offset:2px}
+.hotel-photo-thumb img{width:100%;height:100%;object-fit:cover;display:block}
