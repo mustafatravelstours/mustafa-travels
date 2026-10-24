@@ -1,0 +1,12 @@
+Mustafa Travels — Floating White Header Update
+
+Based on your approved reference: white pill-shaped navbar, black/gold contact button, clean compact brand mark and black navigation.
+
+Modified: index.html, umrah.html, umrah-detail.html, six secondary public pages, premium-v2.css, umrah-detail-premium.css.
+Added: header-theme.css.
+
+No Supabase configuration, database queries, pricing calculations, admin code, or package records were changed.
+
+This is a compact, website-native logo identity; the original full-size branded logo files remain in the ZIP.
+
+Test first on a Vercel preview, then promote to production after checking desktop/mobile and live package data.

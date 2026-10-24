@@ -6,3 +6,20 @@
 .nav .logo-image img{display:block;width:160px;height:72px;object-fit:contain}
 .site-nav .brand-image img{display:block;width:150px;height:70px;object-fit:contain}
 @media(max-width:760px){.nav .logo-image img,.site-nav .brand-image img{width:112px;height:55px}.nav .logo-image,.site-nav .brand-image{padding:2px 5px}}
+
+/* Approved floating white navigation — reference-inspired, implemented as native HTML/CSS */
+:root{--gold:#d1a74f;--cream:#f7f5ef;--dark:#111}
+body{background:#f8f7f4}
+.nav{position:absolute;top:16px;left:clamp(14px,3%,56px);right:clamp(14px,3%,56px);width:auto;max-width:1480px;margin:0 auto;padding:10px 16px 10px 18px;min-height:72px;border-radius:999px;background:#fff;color:#111;display:flex;align-items:center;justify-content:space-between;gap:20px;box-shadow:0 16px 45px rgba(0,0,0,.16);z-index:30}
+.nav .logo-image{display:flex;align-items:center;justify-content:flex-start;gap:7px;background:transparent;border-radius:0;padding:0;box-shadow:none;min-width:155px;color:#111;white-space:normal}
+.brand-mark{display:block;width:43px;height:43px;flex:none}.brand-mark svg{width:100%;height:100%;display:block}
+.brand-copy{display:flex;flex-direction:column;line-height:1.05;letter-spacing:0}.brand-copy strong{font-size:17px;font-weight:900;letter-spacing:.035em;color:#101010}.brand-copy small{font-size:8px;font-weight:800;letter-spacing:.10em;color:#484848;margin-top:4px}
+.navlinks{display:flex;align-items:center;justify-content:center;gap:clamp(12px,1.6vw,25px);flex-wrap:nowrap;font-size:13px;font-weight:700}
+.navlinks a{white-space:nowrap;color:#111}.navlinks a:hover,.navlinks a[aria-current="page"]{color:#c79e43}
+.nav .pill{background:#101010;color:#dfb451;border-radius:999px;padding:14px 22px;white-space:nowrap;font-weight:800;font-size:13px;box-shadow:none}
+.nav .pill:hover{background:#303030;color:#f0c76c}
+.hero{min-height:710px;padding-top:95px;background:linear-gradient(90deg,rgba(0,0,0,.77),rgba(0,0,0,.40) 58%,rgba(0,0,0,.20)),url('https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?auto=format&fit=crop&w=2000&q=85') center/cover}
+.collection-hero{min-height:480px;padding-top:110px}
+.card-image{height:265px}.lux-photo{height:280px}
+@media(max-width:1180px){.nav{border-radius:28px;flex-wrap:wrap;justify-content:center;gap:8px 20px;padding:12px 20px}.nav .logo-image{margin-right:auto}.navlinks{order:3;width:100%;flex-wrap:wrap;gap:12px 20px;padding:8px 0 2px}.nav .pill{margin-left:auto}.hero{padding-top:155px}.collection-hero{padding-top:170px}}
+@media(max-width:650px){.nav{top:10px;left:10px;right:10px;border-radius:23px;padding:11px 13px;gap:10px}.nav .logo-image{min-width:0}.brand-mark{width:36px;height:36px}.brand-copy strong{font-size:14px}.brand-copy small{font-size:7px}.nav .pill{padding:10px 12px;font-size:11px}.navlinks{font-size:11px;gap:9px 13px}.hero{min-height:640px;padding-top:205px}.collection-hero{min-height:480px;padding-top:205px}.hero h1{font-size:clamp(38px,10vw,56px)}}
