@@ -1,0 +1,13 @@
+MUSTAFA TRAVELS PREMIUM V2
+
+This is a frontend upgrade based on the prior GoDaddy-ready files.
+It retains admin.html, umrah-builder.html, umrah-detail.html and Supabase config.
+
+1. BACK UP your current GitHub repository before replacing files.
+2. Upload all files in this ZIP to repository ROOT (not a subfolder).
+3. Commit changes; Vercel should deploy the new frontend.
+4. Check index.html, umrah.html and umrah-detail.html?id=1 on Vercel before pointing GoDaddy domain.
+5. Verify published Umrah package and sharing rates appear; browser must be able to SELECT from umrah_public and umrah_sharing_rates under RLS.
+6. Do not connect your production GoDaddy domain until these tests pass.
+
+Notes: This version DOES NOT connect Expedia TAAP live inventory, flight booking or payments. World holiday imagery is editorial; holidays are enquiry only. Package images use image_url when a valid direct HTTPS image URL is supplied, otherwise fallback photography. Admin data and existing SQL remain unchanged.

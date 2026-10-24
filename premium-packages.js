@@ -1,0 +1,25 @@
+(()=>{'use strict';
+const cfg=window.MUSTAFA_SUPABASE;
+const targets=[document.getElementById('homeUmrah'),document.getElementById('allUmrah')].filter(Boolean);
+if(!targets.length)return;
+const money=n=>new Intl.NumberFormat('en-IE',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(n);
+const el=(tag,cls,txt)=>{const x=document.createElement(tag);if(cls)x.className=cls;if(txt!==undefined)x.textContent=String(txt);return x};
+const imgUrl=v=>{try{const u=new URL(v);if(u.protocol!=='https:')return null;if(/\.(jpe?g|png|webp|avif)$/i.test(u.pathname)||u.hostname==='images.unsplash.com'||u.hostname.endsWith('.supabase.co')&&u.pathname.includes('/storage/v1/object/public/'))return u.href;return null}catch{return null}};
+const fallback='https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?auto=format&fit=crop&w=1000&q=82';
+const err=m=>targets.forEach(t=>{t.replaceChildren(el('p','empty',m))});
+if(!cfg?.url||!cfg?.publishableKey||!window.supabase?.createClient){err('Our Umrah collection is temporarily unavailable. Please request a quotation on WhatsApp.');return}
+const db=window.supabase.createClient(cfg.url,cfg.publishableKey);
+let packages=[],rates={};let filter='all',search='';
+function monthKey(d){if(!d)return null;const x=new Date(d+'T12:00:00');return Number.isNaN(x.getTime())?null:x.toLocaleString('en-GB',{month:'long',year:'numeric'})}
+function card(r){const a=el('a','lux-card');a.href='umrah-detail.html?id='+encodeURIComponent(r.id);a.setAttribute('aria-label','View '+(r.title||'Umrah package'));
+const visual=el('div','lux-photo');const im=el('img');im.src=imgUrl(r.image_url)||fallback;im.alt=(r.title||'Umrah journey')+' — Makkah and Madinah';im.loading='lazy';im.onerror=()=>{if(im.src!==fallback)im.src=fallback};visual.append(im,el('span','lux-badge','UMRAH COLLECTION'));
+const body=el('div','lux-body');const top=el('div','lux-overline',monthKey(r.departure_date)||'BARCELONA DEPARTURES');body.append(top,el('h3','',r.title||'Umrah Journey'));
+const stays=Array.isArray(r.hotel_stays)?r.hotel_stays:[];const itinerary=el('div','lux-facts');if(r.airline)itinerary.append(el('span','','✈ '+r.airline));if(r.departure_date&&r.return_date)itinerary.append(el('span','','◷ '+r.departure_date+' — '+r.return_date));if(stays.length){const nights=stays.reduce((n,s)=>n+(Number(s.nights)||0),0);itinerary.append(el('span','','⌂ '+(nights||stays.length)+' '+(nights?'nights':'hotel stays')))}body.append(itinerary);
+if(stays.length){const hotel=el('div','lux-hotels');stays.slice(0,3).forEach(s=>hotel.append(el('div','',((s.city||'Hotel')+': '+(s.hotel_name||'To be confirmed')))));body.append(hotel)}
+const ratesRow=rates[r.id];const vals=ratesRow?['price_single','price_double','price_triple','price_quad','price_quint'].map(k=>Number(ratesRow[k])).filter(v=>Number.isFinite(v)&&v>0):[];
+const foot=el('div','lux-bottom');const price=el('div','lux-price');price.append(el('small','',vals.length?'FROM / ADULT':'PRICE ON REQUEST'),el('strong','',vals.length?money(Math.min(...vals)):'Enquire'));foot.append(price,el('span','lux-cta','VIEW JOURNEY ↗'));body.append(foot);a.append(visual,body);return a}
+function render(){for(const t of targets){t.replaceChildren();let list=packages;if(t.id==='allUmrah'){if(filter!=='all')list=list.filter(p=>monthKey(p.departure_date)===filter);if(search)list=list.filter(p=>[p.title,p.airline,p.route,...(Array.isArray(p.hotel_stays)?p.hotel_stays.map(s=>s.hotel_name):[])].join(' ').toLowerCase().includes(search));}else list=list.slice(0,3);if(!list.length)t.append(el('div','empty','No published packages match your selection. Contact us for a personalised quotation.'));else list.forEach(p=>t.append(card(p)));}}
+function filters(){const parent=document.getElementById('umrahFilters');if(!parent)return;parent.replaceChildren();const months=[...new Set(packages.map(p=>monthKey(p.departure_date)).filter(Boolean))];const wrap=el('div','lux-filter-row');const make=(label,value)=>{const b=el('button','lux-filter'+(filter===value?' active':''),label);b.type='button';b.onclick=()=>{filter=value;filters();render()};wrap.append(b)};make('All journeys','all');months.forEach(m=>make(m,m));parent.append(wrap);const input=el('input','lux-search');input.type='search';input.placeholder='Search hotel, airline or package…';input.setAttribute('aria-label','Search Umrah packages');input.value=search;input.addEventListener('input',e=>{search=e.target.value.trim().toLowerCase();render()});parent.append(input)}
+async function load(){const {data,error}=await db.from('umrah_public').select('*').order('created_at',{ascending:false});if(error)throw error;packages=data||[];if(packages.length){const res=await db.from('umrah_sharing_rates').select('package_id,price_single,price_double,price_triple,price_quad,price_quint').in('package_id',packages.map(x=>x.id));if(res.error)console.warn('Rates unavailable',res.error);else(res.data||[]).forEach(r=>rates[r.package_id]=r)}filters();render()}
+load().catch(e=>{console.error('Umrah loading failed:',e);err('Unable to load packages at the moment. Please contact Mustafa Travels on WhatsApp.')});
+})();
