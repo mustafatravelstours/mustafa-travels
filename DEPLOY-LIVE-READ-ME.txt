@@ -1,0 +1,14 @@
+MUSTAFA TRAVELS — DEPLOYMENT & SECURITY CHECKLIST
+
+1. Upload the contents of mustafa-travels-main/ (not its parent folder) to your web hosting public_html or site root.
+2. Check HTTPS, index.html, each page, navigation, WhatsApp links, mobile layouts, and image loading.
+3. The Supabase URL and publishable key are reused from the supplied project. Verify admin_users access control and row-level security policies for site_entries, umrah_packages, travel_blogs. Never publish service-role keys.
+4. Admin is admin.html and uses Supabase Auth. Existing Umrah brochure builder and detail pages are retained. The new category pages read published rows from Supabase.
+5. Admin site_entries supports sections home, flights, umrah, hajj, hotels, visa, photography, hero. To publish honeymoon and holidays, add these section values to your database constraints (if any) and the admin section selector; the selector is updated in this package.
+6. Photo upload in existing admin is URL-based; for actual file uploads configure Supabase Storage or another media service. Do not claim upload works without storage.
+7. WhatsApp enquiry opens a prepared message; it does not automatically send or persist enquiries.
+8. Confirm business address, opening hours and which number is WhatsApp-enabled before publishing. Sample hours are shown; Open Now is calculated using Europe/Madrid.
+9. External Unsplash hero images require internet access and may be replaced with owned licensed photos.
+10. Live flight fares, booking issuance, payment collection, complete translated page copy and backend enquiry storage are NOT implemented.
+11. Back up existing live files and database before replacing. Test on staging first.
+12. Review GDPR, cookie policy, legal notice and privacy notice before accepting live customer data.
